@@ -4,21 +4,24 @@
       <i class="iconfont iconmjiantou-copy"></i>
     </div>
     <div class="header-input">
-      <i class="iconfont iconiconfontshouyezhuyetubiao05"></i>
+      <i class="iconfont iconiconfont shouyezhuyetubiao05"></i>
       输入城市经典游玩物体
     </div>
-    <div class="header-right">
-      {{this.city}}
-      <i class="iconfont iconarrow"></i>
-    </div>
+    <router-link to="/city">
+      <div class="header-right">
+        {{this.city}}
+        <i class="iconfont iconarrow"></i>
+      </div>
+    </router-link>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'HomeHeader',
-  props: {
-    city: String
+  computed: {
+    ...mapState(['city'])
   }
 }
 </script>
@@ -26,13 +29,13 @@ export default {
 <style lang="stylus" scoped>
 @import '~styles/varibles.styl';
   .header
-    height: .86rem
+    height: $headerHeight
     display: flex
     background: $bgColor
     color #ffffff
     .header-left
       width: .64rem
-      line-height .86rem
+      line-height $headerHeight
       float: left
       text-align center
       i
@@ -48,9 +51,11 @@ export default {
       color #000
       padding-left .2rem
     .header-right
-      width:1.24rem
+      min-width: 1.04rem
+      padding 0 .1rem
       line-height .86rem
       float: right
+      color: #fff
       text-align center
       i
         font-size .2rem
